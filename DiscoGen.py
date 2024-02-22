@@ -71,7 +71,7 @@ data = {
     {
       "title": "DiscoGen V0.1",
       "description": "Thanks for using [DiscoGen](https://github.com/TunedWolf/DiscoGen) ",
-      "url": "https://discordapp.com",
+      "url": "https://github.com/TunedWolf/DiscoGen",
       "color": 16749803,
       "image": {
         "url": "https://i0.wp.com/www.techarp.com/wp-content/uploads/2023/05/Discord-Nitro-free-1-month.jpg?fit=900%2C450&ssl=1"
