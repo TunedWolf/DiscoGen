@@ -2,7 +2,18 @@ import requests
 import random
 import string
 
-WEBHOOK_URL = "Your webhook here"
+WEBHOOK_URL = "Your Webhook Here"
+ping = 0
+ask = 1
+while ask:
+    ping = str(input("Do you want to enable @everyone pings? y/n"))
+    print(ping)
+    if ping == "y":       
+      pinger = 1
+      ask = 0       
+    else:
+      pinger = 0
+      ask = 0
 
 def generate_random_string(length=18):
 
@@ -15,11 +26,15 @@ def send_request(code):
         send_to_discord(code)
 
 def send_to_discord(code):
+    if pinger == 1:
+        cont = "@everyone"
+    else:
+        cont = "."
     codec = code
     code = "https://discord.gift/"+ str(code)
     """Send the code through Discord webhook."""
     payload = {
-  "content": "WOAH!",
+  "content": cont,
   "embeds": [
     {
       "title": "Found a vaild code!",
@@ -61,10 +76,8 @@ data = {
       "image": {
         "url": "https://i0.wp.com/www.techarp.com/wp-content/uploads/2023/05/Discord-Nitro-free-1-month.jpg?fit=900%2C450&ssl=1"
       },
-      "author": {
-        "name": "TunedWolf",
-        "url": "https://discordapp.com",
-        "icon_url": "https://cdn.discordapp.com/avatars/716267808983613472/b0fece70f00703d05236287bdf5ca1f5.webp?size=128"
+      "footer": {
+        "text": "Made By TunedWolf"
       },
       "fields": [
         {
@@ -85,7 +98,7 @@ data = {
 }
 reply = requests.post(WEBHOOK_URL, json=data)
 print(reply.status_code)
-
+      
 while 1:
     if __name__ == "__main__": 
         random_code = generate_random_string()
